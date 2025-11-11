@@ -6,6 +6,7 @@ export interface IAdopter extends Document {
   address: string
   email?: string
   phone: string
+  dpi: string
   pets: Types.ObjectId[]
   createdAt: Date
   updatedAt: Date
@@ -16,6 +17,7 @@ const adopterSchema = new Schema<IAdopter>(
     name: { type: String, required: true, trim: true },
     email: { type: String, required: false, unique: true, lowercase: true },
     phone: { type: String, required: true },
+    dpi: { type: String, required: true },
     address: { type: String },
     pets: [
       {
