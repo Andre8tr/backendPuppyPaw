@@ -4,6 +4,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 //Importacion de rutas
 import petRoutes from './routes/v1/petRoutes'
+import adopterRoutes from './routes/v1/adopterRoutes'
 
 const app = express()
 
@@ -25,5 +26,6 @@ app.get('/health', (req, res) => {
 
 //Routes for pets
 app.use('/api/pets', petRoutes)
+app.use('/api/adopters', adopterRoutes)
 
 export default app
