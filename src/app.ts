@@ -2,6 +2,9 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
+//Importacion de rutas
+import petRoutes from './routes/v1/petRoutes'
+
 const app = express()
 
 app.use(helmet())
@@ -19,5 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
 app.get('/health', (req, res) => {
   res.status(200).json({ msg: '🐾 Api funcionando' })
 })
+
+//Routes for pets
+app.use('/api/pets', petRoutes)
 
 export default app

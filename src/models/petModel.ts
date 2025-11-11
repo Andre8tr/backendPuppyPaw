@@ -20,4 +20,4 @@ const petSchema = new Schema<IPet>(
   { timestamps: true }
 )
 
-export const Pet = model<IPet>('Pet', petSchema)
+export const Pet = model<IPet>('Pet', petSchema, 'puppys')
