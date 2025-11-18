@@ -1,4 +1,5 @@
 // src/middlewares/errorHandler.ts
+/* 
 import { Request, Response, NextFunction } from 'express'
 
 interface ErrorWithStatus extends Error {
@@ -48,3 +49,4 @@ export const errorHandler = (
     message: err.message || 'Error interno del servidor',
   })
 }
+ */
