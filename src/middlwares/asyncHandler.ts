@@ -1,5 +1,8 @@
-import { Request, Response, NextFunction } from 'express'
+//src/middlwares/asyncHandler.ts
+import { RequestHandler } from 'express'
 
-export const asyncHandler = (fn: Function) => (req: Request, res: Response, next: NextFunction) => {
-  Promise.resolve(fn(req, res, next)).catch(next)
+export const asyncHandler = (fn: RequestHandler): RequestHandler => {
+  return (req, res, next) => {
+    Promise.resolve(fn(req, res, next)).catch(next)
+  }
 }
