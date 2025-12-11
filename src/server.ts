@@ -10,5 +10,5 @@ const MONGO_URI = process.env.MONGO_URI || 'Testt'
 connectDB(MONGO_URI)
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port: ${PORT}`)
+  console.log(`🚀 Server running on http://localhost:${PORT}`)
 })

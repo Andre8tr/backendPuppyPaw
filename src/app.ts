@@ -19,6 +19,11 @@ if (process.env.NODE_ENV !== 'production') {
 }
 */
 
+//root route
+app.get('/', (req, res) => {
+  res.status(200).json({ msg: 'Api Root' })
+})
+
 //route for test
 app.get('/health', (req, res) => {
   res.status(200).json({ msg: '🐾 Api funcionando' })
