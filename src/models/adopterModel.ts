@@ -22,7 +22,7 @@ const adopterSchema = new Schema<IAdopter>(
     pets: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Pet', // 👈 referencia al modelo Pet
+        ref: 'Pet',
       },
     ],
   },
