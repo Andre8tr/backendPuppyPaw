@@ -50,3 +50,25 @@ export const createNewPet = async (req: Request, res: Response) => {
     res.status(500).json({ msg: 'Error al ingresar mascota' })
   }
 }
+
+export const updatePet = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const { name, age, description } = req.body
+
+    const updatedPet = await Pet.findByIdAndUpdate(
+      id,
+      { name, age, description },
+      { new: true, runValidators: true }
+    )
+
+    if (!updatedPet) {
+      return res.status(404).json({ msg: 'Mascota no encontrada' })
+    }
+
+    res.status(200).json(updatedPet)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ msg: 'Error al editar la mascota' })
+  }
+}
