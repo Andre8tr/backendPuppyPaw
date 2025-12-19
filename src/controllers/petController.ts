@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { Pet } from '../models/petModel'
+import { log } from 'console'
 
 export const getAllPets = async (req: Request, res: Response) => {
   try {
@@ -24,7 +25,28 @@ export const getPetById = async (req: Request, res: Response) => {
 
 export const createNewPet = async (req: Request, res: Response) => {
   try {
-    const newPet = req.params.body
-    if (!newPet) return res.status(500).json({ msg: 'No es correcto el body de mascotas' })
-  } catch (error) {}
+    const { name, age, description, location } = req.body
+    // Validación básica (a propósito simple)
+    if (!name || age === undefined || !description || !description) {
+      return res.status(400).json({
+        msg: 'Faltan campos obligatorios',
+      })
+    }
+
+    console.log('Paso validacion')
+
+    const pet = new Pet({
+      name,
+      age,
+      description,
+      location,
+    })
+
+    const savedPet = await pet.save()
+
+    res.status(201).json(savedPet)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ msg: 'Error al ingresar mascota' })
+  }
 }

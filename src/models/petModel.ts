@@ -5,7 +5,8 @@ export interface IPet extends Document {
   name: string
   age: number
   description?: string
-  adopted: boolean
+  adopted?: boolean
+  location?: boolean
   createdAt: Date
   updatedAt: Date
 }
@@ -16,6 +17,7 @@ const petSchema = new Schema<IPet>(
     age: { type: Number, required: true },
     description: { type: String, required: true },
     adopted: { type: Boolean, default: false },
+    location: { type: String, default: 'Quetzaltenango' },
   },
   { timestamps: true }
 )
